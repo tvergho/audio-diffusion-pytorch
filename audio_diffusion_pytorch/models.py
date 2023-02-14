@@ -111,6 +111,7 @@ class DiffusionAE(DiffusionModel):
         return (loss, info) if with_info else loss
 
     def encode(self, *args, **kwargs):
+        print("self.encoder.device", self.encoder.device)
         return self.encoder(*args, **kwargs)
 
     @torch.no_grad()
