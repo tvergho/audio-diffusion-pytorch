@@ -101,7 +101,7 @@ class DiffusionAE(DiffusionModel):
     ) -> Union[Tensor, Tuple[Tensor, Any]]:
         # Encode input to latent channels
         print("x.device", x.device)
-        print("self.encoder.device", self.encoder.device)
+        # print("self.encoder.device", self.encoder.device)
         latent, info = self.encode(x, with_info=True)
         channels = [None] * self.inject_depth + [latent]
         # Adapt input to diffusion if adapter provided
@@ -111,7 +111,7 @@ class DiffusionAE(DiffusionModel):
         return (loss, info) if with_info else loss
 
     def encode(self, *args, **kwargs):
-        print("self.encoder.device", self.encoder.device)
+        # print("self.encoder.device", self.encoder.device)
         return self.encoder(*args, **kwargs)
 
     @torch.no_grad()
