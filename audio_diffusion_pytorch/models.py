@@ -72,7 +72,7 @@ class DiffusionAE(DiffusionModel):
     def __init__(
         self,
         in_channels: int,
-        device: torch.device,
+        # device: torch.device,
         channels: Sequence[int],
         encoder: Callable,
         inject_depth: int,
@@ -89,7 +89,7 @@ class DiffusionAE(DiffusionModel):
             context_channels=context_channels,
             **kwargs,
         )
-        self.encoder = encoder(device=device)
+        self.encoder = encoder()
         self.in_channels = in_channels
         self.inject_depth = inject_depth
         # Optional custom latent factor and adapter
