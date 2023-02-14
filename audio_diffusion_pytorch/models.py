@@ -81,7 +81,8 @@ class DiffusionAE(DiffusionModel):
         **kwargs,
     ):
         context_channels = [0] * len(channels)
-        context_channels[inject_depth] = encoder.out_channels
+        self.encoder = encoder()
+        context_channels[inject_depth] = self.encoder.out_channels
         super().__init__(
             in_channels=in_channels,
             channels=channels,
@@ -89,7 +90,6 @@ class DiffusionAE(DiffusionModel):
             **kwargs,
         )
         self.in_channels = in_channels
-        self.encoder = encoder()
         self.inject_depth = inject_depth
         # Optional custom latent factor and adapter
         self.latent_factor = default(latent_factor, self.encoder.downsample_factor)
