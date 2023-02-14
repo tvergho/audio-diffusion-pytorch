@@ -89,7 +89,7 @@ class DiffusionAE(DiffusionModel):
             context_channels=context_channels,
             **kwargs,
         )
-        self.encoder = encoder()
+        self.encoder = encoder(device=device)
         self.in_channels = in_channels
         self.inject_depth = inject_depth
         # Optional custom latent factor and adapter
